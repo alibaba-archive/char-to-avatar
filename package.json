@@ -1,0 +1,42 @@
+{
+  "name": "char-to-avatar",
+  "description": "Convert a character to avatar image in NodeJS",
+  "authors": [
+    "Yan Qing <admin@zensh.com>"
+  ],
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:teambition/char-to-avatar.git"
+  },
+  "homepage": "https://github.com/teambition/char-to-avatar",
+  "keywords": [
+    "character",
+    "word",
+    "image",
+    "canvas"
+  ],
+  "dependencies": {
+    "canvas": "^1.2.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.1.1",
+    "gulp-sequence": "^0.3.2",
+    "mocha": "^2.2.5",
+    "standard": "^4.5.1",
+    "toa": "^0.12.2"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "ignore": [
+    "**/.*",
+    "benchmark",
+    "test",
+    "examples",
+    "docs",
+    "gulpfile.js"
+  ]
+}
