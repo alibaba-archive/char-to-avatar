@@ -7,7 +7,7 @@
 var toa = require('toa')
 var CharToAvatar = require('../index')
 
-var app = toa(function *() {
+var app = toa(function () {
   if (this.path === '/favicon.ico') this.body = null
   else {
     var character = decodeURIComponent(this.path).slice(1, 2) || 't'
@@ -15,10 +15,8 @@ var app = toa(function *() {
       shape: 'circle',
       backgroundColor: 'rgba(255, 0, 0, 0.8)'
     })
-    var dataURL = yield avatar.toDataURL()
-    console.log(dataURL.length)
-    this.type = 'html'
-    this.body = `<img src="${dataURL}" />`
+    this.type = 'png'
+    this.body = avatar.pngStream()
   }
 })
 

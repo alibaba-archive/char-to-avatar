@@ -10,7 +10,6 @@ module.exports = CharToAvatar
 CharToAvatar.font = '60px \'Microsoft Yahei\''
 CharToAvatar.textAlign = 'center'
 CharToAvatar.textBaseline = 'middle'
-CharToAvatar.textFactor = 0.95
 
 function CharToAvatar (character, options) {
   options = options || {}
@@ -37,9 +36,7 @@ function CharToAvatar (character, options) {
   ctx.textBaseline = CharToAvatar.textBaseline
   ctx.textDrawingMode = 'glyph'
   ctx.patternQuality = 'nearest'
-
-  var fix = Math.floor(radius * CharToAvatar.textFactor)
-  ctx.fillText(character, Math.floor(fix * CharToAvatar.textFactor), fix, fix)
+  ctx.fillText(character, radius, radius, radius)
 }
 
 CharToAvatar.prototype.pngStream = function () {
