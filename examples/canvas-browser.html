@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas avatar</title>
+</head>
+<body>
+  <canvas id="avatar" width="100" height="100"></canvas>
+<script>
+var avatar, ctx, size, radius
+avatar = document.getElementById('avatar')
+ctx = avatar.getContext('2d')
+size = avatar.width
+radius = size / 2
+
+ctx.fillStyle = 'rgba(255, 0, 0, 0.8)'
+ctx.beginPath()
+ctx.arc(radius, radius, radius, 0, Math.PI * 2, true)
+ctx.closePath()
+ctx.fill()
+
+ctx.font = '60px \'Microsoft Yahei\''
+ctx.fillStyle = 'white'
+ctx.textAlign = 'center'
+ctx.textBaseline = 'middle'
+ctx.fillText('H', radius, radius)
+</script>
+</body>
+</html>

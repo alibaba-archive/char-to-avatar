@@ -7,36 +7,39 @@
 var Canvas = require('canvas')
 
 module.exports = CharToAvatar
-CharToAvatar.font = '120px \'Microsoft Yahei\''
+CharToAvatar.font = '60px \'Microsoft Yahei\''
 CharToAvatar.textAlign = 'center'
 CharToAvatar.textBaseline = 'middle'
+CharToAvatar.textFactor = 0.95
 
-function CharToAvatar (character, shape, charColor, backgroundColor, size) {
-  size = size > 0 ? +size : 200
+function CharToAvatar (character, options) {
+  options = options || {}
+  var size = options.size > 0 ? +options.size : 100
+
   this.canvas = new Canvas(size, size)
   var ctx = this.canvas.getContext('2d')
-  ctx.fillStyle = backgroundColor
+  ctx.fillStyle = options.backgroundColor || '#383838'
 
   var radius = size / 2
-  switch (shape) {
+  switch (options.shape) {
     case 'circle':
       ctx.beginPath()
-      ctx.arc(radius, radius, radius, 0, 2 * Math.PI, true)
+      ctx.arc(radius, radius, radius, 0, Math.PI * 2, true)
       ctx.fill()
       break
     default:
       ctx.fillRect(0, 0, size, size)
   }
 
-  ctx.fillStyle = charColor
+  ctx.fillStyle = options.color || '#fff'
   ctx.font = CharToAvatar.font
   ctx.textAlign = CharToAvatar.textAlign
   ctx.textBaseline = CharToAvatar.textBaseline
   ctx.textDrawingMode = 'glyph'
   ctx.patternQuality = 'nearest'
 
-  var fix = radius * 0.9
-  ctx.fillText(character, fix, fix, fix * 2)
+  var fix = Math.floor(radius * CharToAvatar.textFactor)
+  ctx.fillText(character, Math.floor(fix * CharToAvatar.textFactor), fix, fix)
 }
 
 CharToAvatar.prototype.pngStream = function () {
